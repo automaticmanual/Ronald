@@ -39,11 +39,11 @@ define([
         provider_: provider,
 
         /**
-         * A key locater. used to override key mappings.
+         * A key locator. used to override key mappings.
          * 
          * @type {Object}
          */
-        locater_: Gizmo.extend({
+        locator_: Gizmo.extend({
           driver: 'driver'
         }),
 
@@ -55,7 +55,7 @@ define([
         options: options || {}
       };
 
-      adapter.locater_ = adapter.locater_.extend(Dot.result(adapter.options, 'locater') || {});
+      adapter.locator_ = adapter.locator_.extend(Dot.result(adapter.options, 'locator') || {});
 
       return  this.extend(adapter);
     },
@@ -66,8 +66,18 @@ define([
      * @param  {!String} key
      * @return {?String}
      */
-    locater: function(key) {
-      return this.locater_[key];
+    locator: function(key) {
+      return this.locator_[key];
+    },
+
+    /**
+     * Detects driver type needed to resolve model.
+     * 
+     * @param  {!Object} model
+     * @return {?Ronald/db/Driver}
+     */
+    driver: function(model) {
+      return this.provider_.get(model[this.locator('driver')]);
     },
 
     /**
@@ -84,7 +94,7 @@ define([
     query: function(method, model, options) {
       var driver, request;
 
-      driver = this.provider_.get(model[this.locater('driver')]);
+      driver = this.driver(model);
 
       Dot
         .assert(driver, Errors.DriverNotFound.create())

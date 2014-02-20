@@ -2,23 +2,23 @@ define([
   'Gizmo',
   'Ronald/db/Provider',
   'Ronald/db/drivers/all'
-], function(Gizmo) {
+], function() {
 
   /**
-   * Ronald entry point.
+   * Gizmo entry point.
    *
-   * @extends {Gizmo}
-   * @exports Ronald
+   * @extends {Gizmo/helpers/Base}
+   * @exports Gizmo
    */
   var Ronald = {
 
     /**
-     * Version of build. This will only be populated during a build.
+     * Version meta data. Will only be populated on build.
      * 
      * @type {String}
      */
-    version: '{{version}}'
+    version: '{{version}}',
   };
 
-  return Ronald.extend(Gizmo);
+  return Ronald;
 });

@@ -70,27 +70,48 @@ define([
       });
     });
 
-    describe('#locater', function() {
-      it('Should get values from options.locater.', function() {
+    describe('#locator', function() {
+      it('Should get values from options.locator.', function() {
         Adapter
           .create(provider, {
-            locater: {
+            locator: {
               driver: 'apple'
             }
           })
-          .locater('driver')
+          .locator('driver')
           .should.equal('apple');
       });
 
       it('Should not delete default values.', function() {
         Adapter
           .create(provider, {
-            locater: {
+            locator: {
               cat: 'ronnie'
             }
           })
-          .locater('driver')
+          .locator('driver')
           .should.equal('driver');
+      });
+    });
+
+    describe('#driver', function() {
+      it('Should detect a driver neede to resolve model.', function() {
+        provider.register(Driver);
+
+        Adapter
+          .create(Provider
+            .create()
+            .register(Driver))
+          .driver({
+            driver: 'Driver'
+          })
+          .should.equal(Driver);
+      });
+
+      it('Should return nothing on non resolved drivers.', function() {
+        var adapter = Adapter.create(provider);
+
+        should.not.exist(adapter.driver({}));
       });
     });
 
@@ -129,22 +150,6 @@ define([
         };
 
         throwMe.should.throw(Errors.UnsupportedMethod.create().toString());
-      });
-
-      it('Should select a drive based on locater.', function() {
-        provider.register(Driver);
-
-        var doNotThrowMe = function() {
-          Adapter
-            .create(Provider
-              .create()
-              .register(Driver))
-            .query('create', {
-              driver: 'Driver'
-            });
-        };
-
-        doNotThrowMe.should.not.throw;
       });
 
       it('Should return a Ronald/db/Request object on query.', function() {
