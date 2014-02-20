@@ -2,7 +2,7 @@ define([
   'Gizmo',
   'Ronald/helpers/Dot',
   'Ronald/db/Request',
-  'Ronald/db/Provider',
+  'Ronald/db/DriverProvider',
   'Ronald/db/AdapterErrors'
 ], function(Gizmo, Dot, Request, Provider, Errors) {
 
@@ -109,18 +109,18 @@ define([
     },
 
     /**
-     * [support description]
+     * Determines if adapter is supported.
      * 
-     * @return {[type]} [description]
+     * @return {!Boolean}
      */
-    support: function() {
+    supported: function() {
       return true;
     },
 
     /**
-     * [name description]
+     * Name of adapter.
      * 
-     * @return {[type]} [description]
+     * @return {!String}
      */
     name: function() {
       return 'Adapter';

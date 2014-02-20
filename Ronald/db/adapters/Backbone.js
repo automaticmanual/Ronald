@@ -11,15 +11,6 @@ define([
   var Backbone = {
 
     /**
-     * Backbone sync method. Should overwrite model or global sync.
-     * 
-     * @alias query
-     */
-    sync: function() {
-      this.query.apply(this, [].slice.apply(arguments));
-    },
-
-    /**
      * Determines model driver needed. If one is not provided, use native backbone.
      * 
      * @param  {!Object} model
@@ -35,7 +26,14 @@ define([
       search[this.locator('driver')] = 'Backbone';
 
       return Adapter.driver.call(this, search);
-    }
+    },
+
+    /**
+     * Adapter name
+     * 
+     * @type {String}
+     */
+    name: 'Backbone'
   };
 
   return Adapter.extend(Backbone);

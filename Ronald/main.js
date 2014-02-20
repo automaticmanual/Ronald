@@ -1,7 +1,4 @@
 define([
-  'Gizmo',
-  'Ronald/db/Provider',
-  'Ronald/db/drivers/all'
 ], function() {
 
   /**
@@ -10,15 +7,7 @@ define([
    * @extends {Gizmo/helpers/Base}
    * @exports Gizmo
    */
-  var Ronald = {
-
-    /**
-     * Version meta data. Will only be populated on build.
-     * 
-     * @type {String}
-     */
-    version: '{{version}}',
-  };
+  var Ronald = { };
 
   return Ronald;
 });

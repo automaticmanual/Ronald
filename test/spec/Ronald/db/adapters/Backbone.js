@@ -1,7 +1,7 @@
 define([
   'Ronald/db/Adapter',
   'Ronald/db/Driver',
-  'Ronald/db/Provider',
+  'Ronald/db/DriverProvider',
   'Ronald/db/adapters/Backbone'
 ], function(Adapter, Driver, Provider, Backbone) {
 

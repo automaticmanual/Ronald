@@ -1,6 +1,6 @@
 define([
-  'Ronald/db/Driver',
-  'Ronald/db/drivers/Backbone'
+  'Ronald/db/Adapter',
+  'Ronald/db/adapters/Backbone'
 ], function() {
   return [].slice.call(arguments);
 });

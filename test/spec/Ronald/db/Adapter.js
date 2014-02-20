@@ -1,6 +1,6 @@
 define([
   'Gizmo',
-  'Ronald/db/Provider',
+  'Ronald/db/DriverProvider',
   'Ronald/db/Driver',
   'Ronald/db/Request',
   'Ronald/db/AdapterErrors',
