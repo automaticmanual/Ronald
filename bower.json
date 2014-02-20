@@ -1,0 +1,23 @@
+{
+  "name": "Ronald",
+  "version": "0.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mocha": "~1.17.1",
+    "chai": "~1.8.1",
+    "almond": "~0.2.9"
+  },
+  "dependencies": {
+    "requirejs": "~2.1.10",
+    "jquery": "~2.1.0",
+    "Gizmo": "https://github.com/rstone770/Gizmo.git"
+  }
+}
