@@ -9,7 +9,7 @@ define([
     var driverProvider;
 
     beforeEach(function() {
-      driverProvider = DriverProvider.create();
+      driverProvider = DriverProvider.construct();
     });
 
     describe('Ronald/db/DriverdriverProvider', function() {
@@ -31,7 +31,7 @@ define([
           driverProvider.register({});
         };
 
-        throwMe.should.throw(Errors.NotDriver.create().toString());
+        throwMe.should.throw(Errors.NotDriver.construct().toString());
       });
 
       it('Should register a Ronald/db/Drivers.', function() {

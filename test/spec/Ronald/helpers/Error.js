@@ -7,7 +7,7 @@ define([
     var error;
 
     beforeEach(function() {
-      error = Error.create('error', 'message');
+      error = Error.construct('error', 'message');
     });
 
     describe('Ronald/helpers/Error', function() {
@@ -17,13 +17,13 @@ define([
       });
     });
 
-    describe('#create', function() {
+    describe('#construct', function() {
       it('Should contain an name field matching argument.', function() {
         error.should.have.property('name', 'error');
       });
 
       it('Should populate name if one is not provided.', function() {
-        Error.create().should.have.property('name', 'Unknown');
+        Error.construct().should.have.property('name', 'Unknown');
       });
 
       it('Should contain a message field matching argument.', function() {
@@ -31,7 +31,7 @@ define([
       });
 
       it('Should populate message if one is not provided.', function() {
-        Error.create().should.have.property('message', 'No details');
+        Error.construct().should.have.property('message', 'No details');
       });
     });
 

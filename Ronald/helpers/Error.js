@@ -11,13 +11,13 @@ define([
   var Error = {
 
     /**
-     * Creates an Error object.
+     * constructs an Error object.
      * 
      * @param  {String=} name
      * @param  {String=} message
      * @return {!Ronald/helpers/Error}
      */
-    create: function(name, message) {
+    construct: function(name, message) {
       var error = {
 
         /**

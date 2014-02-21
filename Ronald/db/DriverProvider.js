@@ -22,7 +22,7 @@ define([
      * @return {!this}
      */
     register: function(driver) {
-      Dot.assert(driver && driver.instanceOf && driver.instanceOf(Driver), Errors.NotDriver.create());
+      Dot.assert(driver && driver.instanceOf && driver.instanceOf(Driver), Errors.NotDriver.construct());
 
       Provider.register.call(this, Dot.result(driver, 'name'), driver);
 

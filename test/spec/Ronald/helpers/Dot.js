@@ -8,7 +8,7 @@ define([
     var dot;
 
     beforeEach(function() {
-      dot = Dot.create();
+      dot = Dot.construct();
     });
 
     describe('Ronald/helpers/Dot', function() {
@@ -43,7 +43,7 @@ define([
 
       it('Should throw a provided error.', function() {
         var throwMe = function() {
-          Dot.assert(null, Error.create('error', 'explosions'));
+          Dot.assert(null, Error.construct('error', 'explosions'));
         };
 
         throwMe.should.throw('explosions');

@@ -43,6 +43,15 @@ define([
     },
 
     /**
+     * Determines if this driver is supported. via Testing for Backbone
+     * 
+     * @return {!Boolean}
+     */
+    supported: function() {
+      return !!this._sync;
+    },
+
+    /**
      * Reads
      * 
      * @param  {!Ronald/db/Request} request
@@ -52,12 +61,12 @@ define([
     },
 
     /**
-     * Create
+     * construct
      * 
      * @param  {!Ronald/db/Request} request
      */
-    create: function(request) {
-      this._request('create', request);
+    construct: function(request) {
+      this._request('construct', request);
     },
 
     /**
@@ -85,17 +94,8 @@ define([
      */
     patch: function(request) {
       this._request('patch', request);
-    },
-
-    /**
-     * Determines if this driver is supported. via Testing for Backbone
-     * 
-     * @return {!Boolean}
-     */
-    supported: function() {
-      return !!sync;
     }
   };
 
-  return Backbone.extend(Driver);
+  return Driver.extend(Backbone);
 });

@@ -21,8 +21,8 @@ define([
        * 
        * @return {Ronald/helpers/Error}
        */
-      create: function() {
-        return Error.create('NotDriver', 'Not a Driver.');
+      construct: function() {
+        return Error.construct('NotDriver', 'Not a Driver.');
       }
     })
   };

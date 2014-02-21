@@ -15,11 +15,11 @@ define([
         });
 
       provider = Provider
-        .create()
+        .construct()
         .register(backboneDriver)
         .register(Driver);
 
-      backbone = Backbone.create(provider);
+      backbone = Backbone.construct(provider);
     });
 
     describe('Ronald/db/adapters/Backbone', function() {

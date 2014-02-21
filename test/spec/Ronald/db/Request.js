@@ -16,7 +16,7 @@ define([
         option: 'option'
       };
 
-      request = Request.create(model, options);
+      request = Request.construct(model, options);
     });
 
     describe('Ronald/db/Request', function() {
@@ -26,7 +26,7 @@ define([
       });
     });
 
-    describe('#create', function() {
+    describe('#construct', function() {
       it('Should have a model based on argument.', function() {
         request.should.have.property('model', model);
       });
@@ -35,8 +35,8 @@ define([
         request.should.have.property('options', options);
       });
 
-      it('Should create an empty object if options are not provided.', function() {
-        var request = Request.create(model);
+      it('Should construct an empty object if options are not provided.', function() {
+        var request = Request.construct(model);
 
         request.should.have.property('options');
         request.options.should.be.an('object');

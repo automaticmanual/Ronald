@@ -15,20 +15,20 @@ define([
         describe('Ronald/db/AdapterProviderErrors.' + errorKey, function() {
           it('Should extend Ronald/helpers/Error', function() {
             ProviderError.instanceOf(Error).should.be.true;
-            ProviderError.create().instanceOf(Error).should.be.true;
+            ProviderError.construct().instanceOf(Error).should.be.true;
           });
         });
 
-        describe('#create', function() {
+        describe('#construct', function() {
           var ProviderError, providerError;
 
           ProviderError = Errors[errorKey];
 
-          providerError = ProviderError.create();
+          providerError = ProviderError.construct();
 
           it('Should take no arguments.', function() {
-            ProviderError.create('error', 'message').should.have.property('name', providerError.name);
-            ProviderError.create('error', 'message').should.have.property('message', providerError.message);
+            ProviderError.construct('error', 'message').should.have.property('name', providerError.name);
+            ProviderError.construct('error', 'message').should.have.property('message', providerError.message);
           });
         });
       });

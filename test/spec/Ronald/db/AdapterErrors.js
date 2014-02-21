@@ -15,20 +15,20 @@ define([
         describe('Ronald/db/AdapterErrors.' + errorKey, function() {
           it('Should extend Ronald/helpers/Error', function() {
             AdapterError.instanceOf(Error).should.be.true;
-            AdapterError.create().instanceOf(Error).should.be.true;
+            AdapterError.construct().instanceOf(Error).should.be.true;
           });
         });
 
-        describe('#create', function() {
+        describe('#construct', function() {
           var AdapterError, adapterError;
 
           AdapterError = Errors[errorKey];
 
-          adapterError = AdapterError.create();
+          adapterError = AdapterError.construct();
 
           it('Should take no arguments.', function() {
-            AdapterError.create('error', 'message').should.have.property('name', adapterError.name);
-            AdapterError.create('error', 'message').should.have.property('message', adapterError.message);
+            AdapterError.construct('error', 'message').should.have.property('name', adapterError.name);
+            AdapterError.construct('error', 'message').should.have.property('message', adapterError.message);
           });
         });
       });

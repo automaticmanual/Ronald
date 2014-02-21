@@ -21,8 +21,8 @@ define([
        * 
        * @return {Ronald/helpers/Error}
        */
-      create: function() {
-        return Error.create('DriverNotFound', 'Requested driver was not found.');
+      construct: function() {
+        return Error.construct('DriverNotFound', 'Requested driver was not found.');
       }
     }),
 
@@ -38,8 +38,8 @@ define([
        * 
        * @return {Ronald/helpers/Error}
        */
-      create: function() {
-        return Error.create('DriverNotSupported', 'Requested driver is not supprted.');
+      construct: function() {
+        return Error.construct('DriverNotSupported', 'Requested driver is not supprted.');
       }
     }),
 
@@ -55,8 +55,8 @@ define([
        * 
        * @return {Ronald/helpers/Error}
        */
-      create: function() {
-        return Error.create('NotProvider', 'Argument is not of type Ronald/db/Provider.');
+      construct: function() {
+        return Error.construct('NotProvider', 'Argument is not of type Ronald/db/Provider.');
       }
     }),
 
@@ -72,8 +72,8 @@ define([
        * 
        * @return {Ronald/helpers/Error}
        */
-      create: function() {
-        return Error.create('UnsupportedMethod', 'Method is not supported by driver.');
+      construct: function() {
+        return Error.construct('UnsupportedMethod', 'Method is not supported by driver.');
       }
     })
   };

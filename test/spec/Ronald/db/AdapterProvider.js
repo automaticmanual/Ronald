@@ -10,7 +10,7 @@ define([
     var adapterProvider;
 
     beforeEach(function() {
-      adapterProvider = AdapterProvider.create(DriverProvider);
+      adapterProvider = AdapterProvider.construct(DriverProvider);
     });
 
     describe('Ronald/db/AdapterProvider', function() {
@@ -20,13 +20,13 @@ define([
       });
     });
 
-    describe('#create', function() {
+    describe('#construct', function() {
       it('Should throw a Ronald/db/AdapterProviderErrors#NotDriverProvider with non Ronald/db/DriverProvider argument', function() {
         var throwMe = function() {
-          AdapterProvider.create();
+          AdapterProvider.construct();
         };
 
-        throwMe.should.throw(Errors.NotDriverProvider.create().toString());
+        throwMe.should.throw(Errors.NotDriverProvider.construct().toString());
       });
     });
 
@@ -36,7 +36,7 @@ define([
           adapterProvider.register({});
         };
 
-        throwMe.should.throw(Errors.NotAdapter.create().toString());
+        throwMe.should.throw(Errors.NotAdapter.construct().toString());
       });
 
       it('Should return self.', function() {
@@ -59,20 +59,20 @@ define([
             supported: false,
             name: 'notsupported'
           }));
-        console.log(adapterProvider.supported('Adapter'));
+
         adapterProvider.supported('Adapter').should.be.true;
         adapterProvider.supported('notsupported').should.be.false;
       });
     });
 
-    describe('#adapter', function() {
+    describe('#create', function() {
       it('Should throw Ronald/db/AdapterProviderErrors#DoesntExist if requested adapter doesnt exist.', function() {
         var throwMe = function() {
           adapterProvider
-            .adapter('Adapter');
+            .create('Adapter');
         };
 
-        throwMe.should.throw(Errors.DoesntExist.create().toString());
+        throwMe.should.throw(Errors.DoesntExist.construct().toString());
       });
 
       it('Should throw Ronald/db/AdapterProviderErrors#NotSupported if requested adapter isnt supported.', function() {
@@ -81,17 +81,17 @@ define([
             .register(Adapter.extend({
               supported: false
             }))
-            .adapter('Adapter');
+            .create('Adapter');
         };
 
-        throwMe.should.throw(Errors.NotSupported.create().toString());
+        throwMe.should.throw(Errors.NotSupported.construct().toString());
       });
 
       it('Should return the adapter.', function() {
         adapterProvider
           .register(Adapter)
-          .adapter('Adapter')
-          .should.deep.equal(Adapter.create(DriverProvider));
+          .create('Adapter')
+          .should.deep.equal(Adapter.construct(DriverProvider));
       });
     });
   });

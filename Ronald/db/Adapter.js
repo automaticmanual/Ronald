@@ -23,11 +23,11 @@ define([
      * @param  {Object=} options
      * @return {!Ronald/db/Adapter}
      */
-    create: function(provider, options) {
+    construct: function(provider, options) {
 
       Dot
-        .assert(provider.instanceOf, Errors.NotProvider.create())
-        .assert(provider.instanceOf(Provider), Errors.NotProvider.create());
+        .assert(provider.instanceOf, Errors.NotProvider.construct())
+        .assert(provider.instanceOf(Provider), Errors.NotProvider.construct());
 
       var adapter = {
 
@@ -97,11 +97,11 @@ define([
       driver = this.driver(model);
 
       Dot
-        .assert(driver, Errors.DriverNotFound.create())
-        .assert(Dot.result(driver, 'supported'), Errors.DriverNotSupported.create())
-        .assert(driver[method], Errors.UnsupportedMethod.create());
+        .assert(driver, Errors.DriverNotFound.construct())
+        .assert(Dot.result(driver, 'supported'), Errors.DriverNotSupported.construct())
+        .assert(driver[method], Errors.UnsupportedMethod.construct());
 
-      request = Request.create(model, options);
+      request = Request.construct(model, options);
 
       driver[method](request);
 

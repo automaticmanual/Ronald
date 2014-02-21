@@ -4,7 +4,7 @@ define([
 ], function(Gizmo, Registry) {
 
   describe('Ronald/helpers/Registry', function() {
-    var registry = Registry.create();
+    var registry = Registry.construct();
 
     describe('Ronald/helpers/Registry', function() {
       it('Should extend Gizmo.', function() {

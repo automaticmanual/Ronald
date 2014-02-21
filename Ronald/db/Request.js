@@ -18,7 +18,7 @@ define([
      * @param  {Object=} options
      * @return {!Ronald/db/Request}
      */
-    create: function(model, options) {
+    construct: function(model, options) {
       return this.extend({
         model: model,
 

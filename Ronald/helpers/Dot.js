@@ -20,7 +20,7 @@ define([
      */
     assert: function(condition, error) {
       if(!condition) {
-        throw (error || Error.create('AssertionError'));
+        throw (error || Error.construct('AssertionError'));
       }
       
       return this;

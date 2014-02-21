@@ -15,17 +15,17 @@ define([
   var AdapterProvider = {
 
     /**
-     * Creates the provider.
+     * constructs the provider.
      *
      * @throws {Ronald/db/AdapterProviderErrors#NotDriverProvider} If driverProvider is not a Ronald/db/DriverProvider
      * 
      * @param  {!Ronald/db/DriverProvider} driverProvider
      * @return {!Ronald/db/AdapterProvider}
      */
-    create: function(driverProvider) {
-      var provider = Provider.create.call(this);
+    construct: function(driverProvider) {
+      var provider = Provider.construct.call(this);
 
-      Dot.assert(driverProvider && driverProvider.instanceOf && driverProvider.instanceOf(DriverProvider), Errors.NotDriverProvider.create());
+      Dot.assert(driverProvider && driverProvider.instanceOf && driverProvider.instanceOf(DriverProvider), Errors.NotDriverProvider.construct());
 
       provider._driverProvider = driverProvider;
 
@@ -51,7 +51,7 @@ define([
      * @return {!this}
      */
     register: function(adapter) {
-      Dot.assert(adapter && adapter.instanceOf && adapter.instanceOf(Adapter), Errors.NotAdapter.create());
+      Dot.assert(adapter && adapter.instanceOf && adapter.instanceOf(Adapter), Errors.NotAdapter.construct());
 
       Provider.register.call(this, Dot.result(adapter, 'name'), adapter);
 
@@ -59,7 +59,7 @@ define([
     },
 
     /**
-     * Creates an adapter if exists.
+     * constructs an adapter if exists.
      *
      * @throws {Ronald/db/AdapterProviderErrors#DoesntExist} If adapter does not exist.
      * @throws {Ronald/db/AdapterProviderErrors#NotSupported} If adapter is not supprted.
@@ -67,12 +67,12 @@ define([
      * @param  {!String} adapter
      * @return {!Ronald/db/Adapter}
      */
-    adapter: function(adapter) {
+    create: function(adapter) {
       Dot
-        .assert(this.has(adapter), Errors.DoesntExist.create())
-        .assert(this.supported(adapter), Errors.NotSupported.create());
+        .assert(this.has(adapter), Errors.DoesntExist.construct())
+        .assert(this.supported(adapter), Errors.NotSupported.construct());
 
-      return this.get(adapter).create(this._driverProvider);
+      return this.get(adapter).construct(this._driverProvider);
     }
   };
 

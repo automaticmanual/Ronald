@@ -10,47 +10,40 @@ define([
    */
   var Driver = {
 
-    create: function() {
-      var driver = {
-      
-      /**
-       * Reads.
-       *
-       * @param {Ronald/db/Request} request
-       */
-        read: function() { },
+    /**
+     * Reads.
+     *
+     * @param {Ronald/db/Request} request
+     */
+    read: function() { },
 
-        /**
-         * Creates.
-         * 
-         * @param {Ronald/db/Request} request
-         */
-        create: function() { },
+    /**
+     * constructs.
+     * 
+     * @param {Ronald/db/Request} request
+     */
+    create: function() { },
 
-        /**
-         * Updates.
-         * 
-         * @param {Ronald/db/Request} request
-         */
-        update: function() { },
+    /**
+     * Updates.
+     * 
+     * @param {Ronald/db/Request} request
+     */
+    update: function() { },
 
-        /**
-         * Deletes.
-         * 
-         * @param {Ronald/db/Request} request
-         */
-        delete: function() { },
+    /**
+     * Deletes.
+     * 
+     * @param {Ronald/db/Request} request
+     */
+    delete: function() { },
 
-        /**
-         * Patches.
-         * 
-         * @param {Ronald/db/Request} request
-         */
-        patch: function() { }
-      };
-
-      return this.extend(driver);
-    },
+    /**
+     * Patches.
+     * 
+     * @param {Ronald/db/Request} request
+     */
+    patch: function() { },
 
     /**
      * Determines if this driver is supported.

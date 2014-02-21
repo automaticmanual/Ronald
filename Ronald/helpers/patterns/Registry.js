@@ -15,7 +15,7 @@ define([
      * 
      * @return {!Roanld/helpers/Registry}
      */
-    create: function() {
+    construct: function() {
       var registry = {
 
         /**

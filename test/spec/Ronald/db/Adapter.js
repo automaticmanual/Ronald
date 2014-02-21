@@ -11,7 +11,7 @@ define([
     var provider;
 
     beforeEach(function() {
-      provider = Provider.create();
+      provider = Provider.construct();
 
       provider
         .register(Driver.extend({
@@ -29,31 +29,31 @@ define([
         Adapter.instanceOf(Gizmo).should.be.true;
 
         Adapter
-          .create(provider)
+          .construct(provider)
           .instanceOf(Gizmo)
           .should.be.true;
       });
     });
 
-    describe('#create', function() {
+    describe('#construct', function() {
       it('Should throw a Ronald/db/AdapterErrors#NotProvider if a none Ronald/db/Provider is passed.', function() {
         var throwMe = function() {
-          Adapter.create({});
+          Adapter.construct({});
         };
 
-        throwMe.should.throw(Errors.NotProvider.create().toString());
+        throwMe.should.throw(Errors.NotProvider.construct().toString());
       });
 
-      it('Should create an instance if a Ronald/db/Provider is passed.', function() {
+      it('Should construct an instance if a Ronald/db/Provider is passed.', function() {
         Adapter
-          .create(provider)
+          .construct(provider)
           .instanceOf(Adapter)
           .should.be.true;
       });
 
-      it('Should create an empty object option if one is not provided.', function() {
+      it('Should construct an empty object option if one is not provided.', function() {
         Adapter
-          .create(provider)
+          .construct(provider)
           .options
           .should.be.an('object');
       });
@@ -64,7 +64,7 @@ define([
         };
 
         Adapter
-          .create(provider, options)
+          .construct(provider, options)
           .options
           .should.equal(options);
       });
@@ -73,7 +73,7 @@ define([
     describe('#locator', function() {
       it('Should get values from options.locator.', function() {
         Adapter
-          .create(provider, {
+          .construct(provider, {
             locator: {
               driver: 'apple'
             }
@@ -84,7 +84,7 @@ define([
 
       it('Should not delete default values.', function() {
         Adapter
-          .create(provider, {
+          .construct(provider, {
             locator: {
               cat: 'ronnie'
             }
@@ -99,8 +99,8 @@ define([
         provider.register(Driver);
 
         Adapter
-          .create(Provider
-            .create()
+          .construct(Provider
+            .construct()
             .register(Driver))
           .driver({
             driver: 'Driver'
@@ -109,7 +109,7 @@ define([
       });
 
       it('Should return nothing on non resolved drivers.', function() {
-        var adapter = Adapter.create(provider);
+        var adapter = Adapter.construct(provider);
 
         should.not.exist(adapter.driver({}));
       });
@@ -119,43 +119,43 @@ define([
       it('Should throw a Ronald/db/AdapterErrors#DriverNotFound if a driver is not found.', function() {
         var throwMe = function() {
           Adapter
-            .create(provider)
-            .query('create', {
+            .construct(provider)
+            .query('construct', {
               driver: 'driver'
             });
         };
 
-        throwMe.should.throw(Errors.DriverNotFound.create().toString());
+        throwMe.should.throw(Errors.DriverNotFound.construct().toString());
       });
 
       it('Should throw a Ronald/db/AdapterErrors#DriverNotSupported if a driver is not supported.', function() {
         var throwMe = function() {
           Adapter
-            .create(provider)
-            .query('create', {
+            .construct(provider)
+            .query('construct', {
               driver: 'unsupported'
             });
         };
 
-        throwMe.should.throw(Errors.DriverNotSupported.create().toString());
+        throwMe.should.throw(Errors.DriverNotSupported.construct().toString());
       });
 
       it('Should throw a Ronald/db/AdapterErrors#UnsupportedMethod if a unsupported method is used.', function() {
         var throwMe = function() {
           Adapter
-            .create(provider)
+            .construct(provider)
             .query('method', {
               driver: 'supported'
             });
         };
 
-        throwMe.should.throw(Errors.UnsupportedMethod.create().toString());
+        throwMe.should.throw(Errors.UnsupportedMethod.construct().toString());
       });
 
       it('Should return a Ronald/db/Request object on query.', function() {
         Adapter
-          .create(provider)
-          .query('create', {
+          .construct(provider)
+          .query('construct', {
             driver: 'supported'
           })
           .instanceOf(Request)

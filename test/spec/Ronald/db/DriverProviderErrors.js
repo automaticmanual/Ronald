@@ -15,16 +15,16 @@ define([
         describe('Ronald/db/DriverProviderErrors.' + errorKey, function() {
           it('Should extend Ronald/helpers/Error', function() {
             ProviderError.instanceOf(Error).should.be.true;
-            ProviderError.create().instanceOf(Error).should.be.true;
+            ProviderError.construct().instanceOf(Error).should.be.true;
           });
         });
 
-        describe('#create', function() {
-          var providerError = ProviderError.create();
+        describe('#construct', function() {
+          var providerError = ProviderError.construct();
 
           it('Should take no arguments.', function() {
-            ProviderError.create('error', 'message').should.have.property('name', providerError.name);
-            ProviderError.create('error', 'message').should.have.property('message', providerError.message);
+            ProviderError.construct('error', 'message').should.have.property('name', providerError.name);
+            ProviderError.construct('error', 'message').should.have.property('message', providerError.message);
           });
         });
       });

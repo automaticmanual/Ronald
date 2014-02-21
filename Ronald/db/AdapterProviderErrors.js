@@ -10,7 +10,7 @@ define([
   var Errors = {
 
     /**
-     * Thrown in the case that create is called without a Ronald/db/DriverProvider
+     * Thrown in the case that construct is called without a Ronald/db/DriverProvider
      * 
      * @type {Ronald/helpers/Error}
      */
@@ -21,13 +21,13 @@ define([
        * 
        * @return {Ronald/helpers/Error}
        */
-      create: function() {
-        return Error.create('NotDriverProvider', 'Provided argument is not of type Ronald/db/DriverProvider.');
+      construct: function() {
+        return Error.construct('NotDriverProvider', 'Provided argument is not of type Ronald/db/DriverProvider.');
       }
     }),
 
     /**
-     * Thrown in the case that create is called without a Ronald/db/Adapter
+     * Thrown in the case that construct is called without a Ronald/db/Adapter
      * 
      * @type {Ronald/helpers/Error}
      */
@@ -38,8 +38,8 @@ define([
        * 
        * @return {Ronald/helpers/Error}
        */
-      create: function() {
-        return Error.create('NotAdapter', 'Provided argument is not of type Ronald/db/Adapter.');
+      construct: function() {
+        return Error.construct('NotAdapter', 'Provided argument is not of type Ronald/db/Adapter.');
       }
     }),
 
@@ -55,8 +55,8 @@ define([
        * 
        * @return {Ronald/helpers/Error}
        */
-      create: function() {
-        return Error.create('DoesntExist', 'Adapter does not exist or is not registered.');
+      construct: function() {
+        return Error.construct('DoesntExist', 'Adapter does not exist or is not registered.');
       }
     }),
 
@@ -72,8 +72,8 @@ define([
        * 
        * @return {Ronald/helpers/Error}
        */
-      create: function() {
-        return Error.create('NotSupported', 'Adapter is not supported.');
+      construct: function() {
+        return Error.construct('NotSupported', 'Adapter is not supported.');
       }
     })
   };
